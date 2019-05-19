@@ -25,8 +25,8 @@ class Mailbox(models.Model):
     last_update = models.DateTimeField(auto_now=True, blank=True)
 
     class Meta:
-        verbose_name = _('Mailbox')
-        verbose_name_plural = _('Mailboxes')
+        verbose_name = _('mailbox')
+        verbose_name_plural = _('mailboxes')
         ordering = ['-date']
 
     @property
@@ -49,8 +49,8 @@ class Template(models.Model):
     last_update = models.DateTimeField(auto_now=True, blank=True)
 
     class Meta:
-        verbose_name = _('Template')
-        verbose_name_plural = _('Templates')
+        verbose_name = _('template')
+        verbose_name_plural = _('templates')
         ordering = ['-date']
 
     def __str__(self):
@@ -72,8 +72,8 @@ class Email(models.Model):
     date = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
-        verbose_name = _('Email')
-        verbose_name_plural = _('Emails')
+        verbose_name = _('email')
+        verbose_name_plural = _('emails')
         ordering = ['-sent_date']
 
     def __str__(self):
