@@ -4,7 +4,9 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.exceptions import APIException
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from django_filters.rest_framework import DjangoFilterBackend
 
+from api.filters import EmailDateFilter
 from api.tasks import send_mail
 from api.models import Mailbox, Template, Email
 from api.serializers import (MailboxSerializer, TemplateSerializer,
@@ -50,6 +52,8 @@ class EmailListView(ListCreateAPIView):
     """
     queryset = Email.objects.all().order_by('-date')
     serializer_class = EmailSerializer
+    filter_backends = [DjangoFilterBackend]
+    filter_class = EmailDateFilter
 
     def perform_create(self, serializer):
         mailbox = serializer.validated_data.get('mailbox')
